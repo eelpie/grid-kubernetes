@@ -1,0 +1,81 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.org/rewrites: "serviceName=auth rewrite=/;serviceName=collections rewrite=/;serviceName=cropper rewrite=/;serviceName=image-loader rewrite=/;serviceName=imgops rewrite=/;serviceName=leases rewrite=/;serviceName=media-api rewrite=/;serviceName=metadata-editor rewrite=/"
+    ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.org/client-max-body-size: "50m"
+  name: grid-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: griddev.eelpieconsulting.co.uk
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+              name: kahuna
+              port:
+                number: 9000
+      - path: /auth/
+        pathType: Prefix
+        backend:
+          service:
+              name: auth
+              port:
+                number: 9000
+      - path: /collections/
+        pathType: Prefix
+        backend:
+          service:
+              name: collections
+              port:
+                number: 9000
+      - path: /cropper/
+        pathType: Prefix
+        backend:
+          service:
+              name: cropper
+              port:
+                number: 9000
+      - path: /image-loader/
+        pathType: Prefix
+        backend:
+          service:
+              name: image-loader
+              port:
+                number: 9000
+      - path: /imgops/
+        pathType: Prefix
+        backend:
+          service:
+              name: imgops
+              port:
+                number: 80
+      - path: /leases/
+        pathType: Prefix
+        backend:
+          service:
+              name: leases
+              port:
+                number: 9000
+      - path: /media-api/
+        pathType: Prefix
+        backend:
+          service:
+              name: media-api
+              port:
+                number: 9000
+      - path: /metadata-editor/
+        pathType: Prefix
+        backend:
+          service:
+              name: metadata-editor
+              port:
+                number: 9000
+  tls:
+    - hosts:
+        - griddev.eelpieconsulting.co.uk
+      secretName: eelpieconsultingcouk
