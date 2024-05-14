@@ -28,5 +28,5 @@ The API urls work when remapped from separate vhosts to sub paths.
 
 Grid services running as pods.
 
-![Pods](./screenshots/pods.png))
+![Pods](./screenshots/pods.png)
 
