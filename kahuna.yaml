@@ -23,6 +23,15 @@ spec:
           mountPath: /etc/gu
         - name: grid-config
           mountPath: /etc/grid
+        resources:
+          limits:
+            memory: "256Mi"
+        env:
+        - name: PLAY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: grid-play-secret
+              key: play-secret
       volumes:
       - name: gu-config
         configMap:

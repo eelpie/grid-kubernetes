@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: metadata-editor
+  name: leases
   labels:
-    app: metadata-editor
+    app: leases
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: metadata-editor
+      app: leases
   template:
     metadata:
       labels:
-        app: metadata-editor
+        app: leases
     spec:
       containers:
-      - name: metadata-editor
-        image: eu.gcr.io/grid-301122/metadata-editor:0.1
+      - name: leases
+        image: eu.gcr.io/grid-301122/leases:0.1
         imagePullPolicy: Always
         volumeMounts:
         - name: gu-config
@@ -34,6 +34,14 @@ spec:
             secretKeyRef:
               name: grid-aws-access-token
               key: AWS_SECRET_ACCESS_KEY
+        - name: PLAY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: grid-play-secret
+              key: play-secret
+        resources:
+          limits:
+            memory: "256Mi"
       volumes:
       - name: gu-config
         configMap:

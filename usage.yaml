@@ -34,10 +34,18 @@ spec:
             secretKeyRef:
               name: grid-aws-access-token
               key: AWS_SECRET_ACCESS_KEY
+        - name: PLAY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: grid-play-secret
+              key: play-secret
         livenessProbe:
           httpGet:
             path: /management/healthcheck
             port: 9000
+        resources:
+          limits:
+            memory: "256Mi"
       volumes:
       - name: gu-config
         configMap:

@@ -34,6 +34,14 @@ spec:
             secretKeyRef:
               name: grid-aws-access-token
               key: AWS_SECRET_ACCESS_KEY
+        - name: PLAY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: grid-play-secret
+              key: play-secret
+        resources:
+          limits:
+            memory: "512Mi"
       volumes:
       - name: gu-config
         configMap:
@@ -44,16 +52,3 @@ spec:
       - name: grid-config
         configMap:
           name: grid
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: media-api
-spec:
-  type: NodePort
-  selector:
-    app: media-api
-  ports:
-    - protocol: TCP
-      port: 9000
-      nodePort: 32410
