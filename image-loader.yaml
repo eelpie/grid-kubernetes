@@ -5,7 +5,7 @@ metadata:
   labels:
     app: image-loader
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: image-loader
@@ -40,8 +40,20 @@ spec:
               name: grid-play-secret
               key: play-secret
         resources:
+          requests:
+            memory: "2Gi"
+            cpu: "500m"
           limits:
-            memory: "1Gi"
+            memory: "2Gi"
+        livenessProbe:
+          initialDelaySeconds: 120
+          httpGet:
+            path: /management/healthcheck
+            port: 9000
+        readinessProbe:
+          httpGet:
+            path: /management/healthcheck
+            port: 9000
       volumes:
       - name: gu-config
         configMap:

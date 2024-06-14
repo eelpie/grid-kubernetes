@@ -18,6 +18,8 @@ spec:
       - name: auth
         image: eu.gcr.io/grid-301122/auth:0.1
         imagePullPolicy: Always
+        ports:
+        - containerPort: 9000
         volumeMounts:
         - name: gu-config
           mountPath: /etc/gu
@@ -40,9 +42,17 @@ spec:
               name: grid-play-secret
               key: play-secret
         resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
           limits:
-            memory: "512Mi"
+            memory: "384Mi"
         livenessProbe:
+          initialDelaySeconds: 120
+          httpGet:
+            path: /management/healthcheck
+            port: 9000
+        readinessProbe:
           httpGet:
             path: /management/healthcheck
             port: 9000
@@ -50,9 +60,6 @@ spec:
       - name: gu-config
         configMap:
           name: gu
-      - name: common-config
-        configMap:
-          name: common
       - name: grid-config
         configMap:
           name: grid

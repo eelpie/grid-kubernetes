@@ -22,6 +22,12 @@ spec:
         - name: imgops
           subPath: nginx.conf
           mountPath: /etc/nginx/nginx.conf
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "256Mi"
       volumes:
       - name: imgops
         configMap:

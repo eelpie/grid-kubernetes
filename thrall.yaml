@@ -40,8 +40,20 @@ spec:
               name: grid-play-secret
               key: play-secret
         resources:
-          limits:
+          requests:
             memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+        livenessProbe:
+          initialDelaySeconds: 120
+          httpGet:
+            path: /management/healthcheck
+            port: 9000
+        readinessProbe:
+          httpGet:
+            path: /management/healthcheck
+            port: 9000
       volumes:
       - name: gu-config
         configMap:
