@@ -3,10 +3,8 @@ kind: Service
 metadata:
   name: collections
 spec:
-  type: NodePort
   selector:
     app: collections
   ports:
     - protocol: TCP
       port: 9000
-      nodePort: 32410

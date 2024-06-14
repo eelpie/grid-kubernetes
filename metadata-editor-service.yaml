@@ -3,11 +3,9 @@ kind: Service
 metadata:
   name: metadata-editor
 spec:
-  type: NodePort
   selector:
     app: metadata-editor
   ports:
     - protocol: TCP
       port: 9000
-      nodePort: 32407
 

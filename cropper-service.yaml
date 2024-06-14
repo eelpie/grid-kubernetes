@@ -3,10 +3,8 @@ kind: Service
 metadata:
   name: cropper
 spec:
-  type: NodePort
   selector:
     app: cropper
   ports:
     - protocol: TCP
       port: 9000
-      nodePort: 32406
