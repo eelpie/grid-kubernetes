@@ -1,0 +1,15 @@
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: image-loader-lb-healthcheck
+spec:
+  default:
+    config:
+      type: HTTP
+      httpHealthCheck:
+        requestPath: /management/healthcheck
+  targetRef:
+    group: ""
+    kind: Service
+    name: image-loader
+
