@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    nginx.org/rewrites: "serviceName=auth rewrite=/;serviceName=collections rewrite=/;serviceName=cropper rewrite=/;serviceName=image-loader rewrite=/;serviceName=imgops rewrite=/;serviceName=leases rewrite=/;serviceName=media-api rewrite=/;serviceName=metadata-editor rewrite=/"
+    nginx.org/rewrites: "serviceName=auth rewrite=/;serviceName=collections rewrite=/;serviceName=cropper rewrite=/;serviceName=image-loader rewrite=/;serviceName=imgproxy rewrite=/;serviceName=leases rewrite=/;serviceName=media-api rewrite=/;serviceName=metadata-editor rewrite=/"
     ingress.kubernetes.io/proxy-body-size: "50m"
     nginx.org/client-max-body-size: "50m"
   name: grid-ingress
@@ -47,13 +47,13 @@ spec:
               name: image-loader
               port:
                 number: 9000
-      - path: /imgops/
+      - path: /imgproxy/
         pathType: Prefix
         backend:
           service:
-              name: imgops
+              name: imgproxy
               port:
-                number: 80
+                number: 8080
       - path: /leases/
         pathType: Prefix
         backend:

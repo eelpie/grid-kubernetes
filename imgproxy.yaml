@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imgproxy
+  labels:
+    app: imgproxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: imgproxy
+  template:
+    metadata:
+      labels:
+        app: imgproxy
+    spec:
+      containers:
+        - name: imageproxy
+          image: darthsim/imgproxy
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+          - name: IMGPROXY_MAX_SRC_RESOLUTION
+            value: '32'
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi

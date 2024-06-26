@@ -70,7 +70,7 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /imgops
+        value: /imgproxy
     filters:
       - type: URLRewrite
         urlRewrite:
@@ -78,8 +78,8 @@ spec:
             type: ReplacePrefixMatch
             replacePrefixMatch: /
     backendRefs:
-    - name: imgops
-      port: 80
+    - name: imgproxy
+      port: 8080
   - matches:
     - path:
         type: PathPrefix
