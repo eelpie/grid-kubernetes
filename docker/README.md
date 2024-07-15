@@ -1,0 +1,1 @@
+docker run -it -e PLAY_SECRET=XXX -e AWS_ACCESS_KEY_ID=XXX -e AWS_SECRET_ACCESS_KEY=XXX --mount type=bind,source="$(pwd)"/config/gu,target=/etc/gu --mount type=bind,source="$(pwd)"/config/grid,target=/etc/grid eu.gcr.io/grid-301122/thrall:0.1
