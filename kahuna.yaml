@@ -30,6 +30,16 @@ spec:
           limits:
             memory: "384Mi"
         env:
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: grid-aws-access-token
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: grid-aws-access-token
+              key: AWS_SECRET_ACCESS_KEY
         - name: PLAY_SECRET
           valueFrom:
             secretKeyRef:
