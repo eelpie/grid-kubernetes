@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: leases
-        image: eu.gcr.io/grid-301122/leases:0.1
+        image: eu.gcr.io/grid-301122/leases:containerised
         imagePullPolicy: Always
         volumeMounts:
         - name: gu-config

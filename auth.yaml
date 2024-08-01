@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: eu.gcr.io/grid-301122/auth:0.1
+        image: eu.gcr.io/grid-301122/auth:containerised
         imagePullPolicy: Always
         ports:
         - containerPort: 9000

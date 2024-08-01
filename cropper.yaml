@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cropper
-        image: eu.gcr.io/grid-301122/cropper:0.1
+        image: eu.gcr.io/grid-301122/cropper:containerised
         imagePullPolicy: Always
         volumeMounts:
         - name: gu-config

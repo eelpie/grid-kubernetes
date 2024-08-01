@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: thrall
-        image: eu.gcr.io/grid-301122/thrall:0.1
+        image: eu.gcr.io/grid-301122/thrall:containerised
         imagePullPolicy: Always
         volumeMounts:
         - name: gu-config

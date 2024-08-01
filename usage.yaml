@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: usage
-        image: eu.gcr.io/grid-301122/usage:0.1
+        image: eu.gcr.io/grid-301122/usage:containerised
         imagePullPolicy: Always
         volumeMounts:
         - name: gu-config

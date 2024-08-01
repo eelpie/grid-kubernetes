@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: kahuna
-        image: eu.gcr.io/grid-301122/kahuna:0.1
+        image: eu.gcr.io/grid-301122/kahuna:containerised
         imagePullPolicy: Always
         volumeMounts:
         - name: gu-config

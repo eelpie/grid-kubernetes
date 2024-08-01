@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: media-api
-        image: eu.gcr.io/grid-301122/media-api:0.1
+        image: eu.gcr.io/grid-301122/media-api:containerised
         imagePullPolicy: Always
         volumeMounts:
         - name: gu-config

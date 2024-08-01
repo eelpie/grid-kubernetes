@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: metadata-editor
-        image: eu.gcr.io/grid-301122/metadata-editor:0.1
+        image: eu.gcr.io/grid-301122/metadata-editor:containerised
         imagePullPolicy: Always
         volumeMounts:
         - name: gu-config
