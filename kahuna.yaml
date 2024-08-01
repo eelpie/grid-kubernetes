@@ -48,9 +48,6 @@ spec:
       - name: gu-config
         configMap:
           name: gu
-      - name: common-config
-        configMap:
-          name: common
       - name: grid-config
         configMap:
           name: grid
