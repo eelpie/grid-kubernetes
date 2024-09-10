@@ -4,7 +4,7 @@ Naive deployment of the Guardian Grid into Kubernetes.
 
 Uses a Nginx ingress to remap the services from vhosts to sub paths. Allows the entire application to run from a single host name.
 
-The container images are built form this [this branch](https://github.com/eelpie/grid/pull/11) of Eel Pie Consultings fork.
+The container images are built from this [this branch](https://github.com/eelpie/grid/pull/11) of Eel Pie Consultings fork.
 
 
 ### Prerequisites
